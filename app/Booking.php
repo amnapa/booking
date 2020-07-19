@@ -24,7 +24,7 @@ class Booking extends Model
     {
         parent::boot();
 
-        //Get booking price and cancellation_penalty based on room schedules
+        //Get booking price and cancellation penalty based on room schedules
         static::creating(function ($booking) {
             $roomSchedule = $booking->room->scheduledBetween($booking->checkin_date, $booking->checkout_date)->first();
             if ($roomSchedule) {

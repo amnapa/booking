@@ -18,7 +18,8 @@ class BookingController extends Controller
 
     public function index()
     {
-        $bookings = Booking::reservationCode($this->request->reservation_code)
+        $bookings = Booking::with(['room', 'room.hotel'])
+            ->reservationCode($this->request->reservation_code)
             ->customerName($this->request->customer_name)
             ->customerEmail($this->request->customer_email)
             ->paginate();

@@ -19,7 +19,7 @@ class RoomController extends Controller
     {
         $rooms = Room::Name($this->request->name)
             ->Type($this->request->type)
-            ->with('hotel')->paginate();
+            ->with(['hotel', 'schedule'])->paginate();
 
         return RoomResource::collection($rooms);
     }

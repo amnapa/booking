@@ -17,7 +17,7 @@ class RoomScheduleController extends Controller
 
     public function index()
     {
-        $roomSchedules = RoomSchedule::paginate();
+        $roomSchedules = RoomSchedule::with(['room', 'room.hotel'])->paginate();
 
         return RoomScheduleResource::collection($roomSchedules);
     }
