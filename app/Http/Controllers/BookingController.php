@@ -34,7 +34,6 @@ class BookingController extends Controller
         $room = Room::find($this->request->room_id);
 
         if ($room instanceof Room && $room->IsAvailable($this->request->checkin_date, $this->request->checkout_date)) {
-            $data['reservation_code'] =
             $booking = $room->booking()->create($data);
 
             //Process booking by calling booking API in background
